@@ -1,5 +1,8 @@
 import static org.junit.Assert.assertEquals;
+
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 public class StringCalculatorTest {
 @Test
@@ -22,4 +25,20 @@ public void addDemiliterSpecifiedAtStart() {
 	assertEquals(StringCalculator.add("//@\n2@3@8"),13);
 	
 }
+@Rule
+public ExpectedException expected = ExpectedException.none();
+
+@Test
+public void throwsOnNegativeNumber() {
+	expected.expect(IllegalArgumentException.class);
+	expected.expectMessage("Negatives not allowed");
+	StringCalculator.add("-32");
 }
+@Test
+public void throwsOnNegativesWithAllNumbersNegative() {
+	expected.expect(IllegalArgumentException.class);
+	expected.expectMessage("Negatives not allowed: 1,-2,-5,23,-6");
+	StringCalculator.add("1,-2,-5,23,-6");
+}
+}
+
