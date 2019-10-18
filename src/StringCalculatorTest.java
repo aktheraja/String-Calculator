@@ -17,13 +17,15 @@ public void addTwoNumbersSeperatedbyCommas() {
 @Test
 public void addNumbersDelimitedByNewLine() {
 	assertEquals(StringCalculator.add("1\n,2,3"),6);
+	assertEquals(StringCalculator.add("1,2\n,3"),6);
 }
 @Test
 public void addDemiliterSpecifiedAtStart() {
 	assertEquals(StringCalculator.add("//;\n1;3;4"),8);
 	assertEquals(StringCalculator.add("//$\n1$2$3"),6);
 	assertEquals(StringCalculator.add("//@\n2@3@8"),13);
-	
+
+
 }
 @Rule
 public ExpectedException expected = ExpectedException.none();
@@ -40,5 +42,15 @@ public void throwsOnNegativesWithAllNumbersNegative() {
 	expected.expectMessage("Negatives not allowed: 1,-2,-5,23,-6");
 	StringCalculator.add("1,-2,-5,23,-6");
 }
+@Test
+public void NumbersLargerThan1000ShouldbeIgnored() {
+	assertEquals(StringCalculator.add("2,1001"),2);
+}
+public void arbitraryLengthDelimiter() {
+	assertEquals(StringCalculator.add("//***\n1***2***3"),6);
+}
+//public void acceptMultipleDelimters() {
+//	assertEquals(StringCalculator.add("//$,@\n1$2@3"),6);
+//}
 }
 

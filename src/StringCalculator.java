@@ -3,7 +3,6 @@ import java.util.regex.Pattern;
 public class StringCalculator {
 	private String delimiter;
 	private String inputs;
-	String x=null;
 	private StringCalculator (String delimiter, String inputs) {
 		this.delimiter=delimiter;
 		this.inputs=inputs;
@@ -21,6 +20,10 @@ private int summer() {
 	String [] arr = inputs.split(Pattern.quote(delimiter));
 	for(String each:arr) {
 		int each_pasered=Integer.parseInt(each.trim());
+		if(each_pasered>1000) {
+			System.out.println(each_pasered);
+			continue;
+		}
 		ensureNoNegativeNumbers(each_pasered);
 	sum+=each_pasered;
 }
