@@ -1,3 +1,4 @@
+import java.util.regex.Pattern;
 
 public class StringCalculator {
 public static int add(String input) {
@@ -5,14 +6,20 @@ public static int add(String input) {
 	if(input.isEmpty()) {
 	return 0;
 	}
-	else if(input.contains(",")) {
-		String [] arr = input.split(",");
+	String delimiter= ",";
+	if (input.startsWith("//")) {
+		String [] vals = input.split("\n",2);
+		delimiter = vals[0].substring(2);
+		input = vals[1];
+		
+	}
+		String [] arr = input.split(Pattern.quote(delimiter));
+		
 		for(String each:arr) {
+			System.out.println(each);
 			sum+=Integer.parseInt(each.trim());
-		}
 	}
 	return sum;
-	
 }
 
 }

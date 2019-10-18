@@ -1,6 +1,4 @@
 import static org.junit.Assert.assertEquals;
-
-
 import org.junit.Test;
 
 public class StringCalculatorTest {
@@ -19,6 +17,9 @@ public void addNumbersDelimitedByNewLine() {
 }
 @Test
 public void addDemiliterSpecifiedAtStart() {
+	assertEquals(StringCalculator.add("//;\n1;3;4"),8);
+	assertEquals(StringCalculator.add("//$\n1$2$3"),6);
+	assertEquals(StringCalculator.add("//@\n2@3@8"),13);
 	
 }
 }
