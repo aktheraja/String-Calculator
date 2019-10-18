@@ -13,8 +13,12 @@ public void addTwoNumbersSeperatedbyCommas() {
 	assertEquals(StringCalculator.add("1,2,5"),8);
 	assertEquals(StringCalculator.add("1,3,5"),9);
 }
-//@Test
-//public void addNumbersDelimitedByNewLine() {
-//	assertEquals(StringCalculator.add("1\n,2,3"),8);
-//}
+@Test
+public void addNumbersDelimitedByNewLine() {
+	assertEquals(StringCalculator.add("1\n,2,3"),6);
+}
+@Test
+public void addDemiliterSpecifiedAtStart() {
+	
+}
 }

@@ -8,7 +8,7 @@ public static int add(String input) {
 	else if(input.contains(",")) {
 		String [] arr = input.split(",");
 		for(String each:arr) {
-			sum+=Integer.parseInt(each);
+			sum+=Integer.parseInt(each.trim());
 		}
 	}
 	return sum;
