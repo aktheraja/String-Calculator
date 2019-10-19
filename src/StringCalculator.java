@@ -8,7 +8,6 @@ public class StringCalculator {
 		this.inputs=inputs;
 	}
 public static int add(String input) {
-	
 	if(input.isEmpty()) {
 	return 0;
 	}
@@ -17,18 +16,15 @@ public static int add(String input) {
 }
 private int summer() {
 	int sum=0;
-	String [] arr = inputs.split(Pattern.quote(delimiter));
+	String [] arr = inputs.split((delimiter));
 	for(String each:arr) {
 		int each_pasered=Integer.parseInt(each.trim());
 		if(each_pasered>1000) {
-			System.out.println(each_pasered);
-			continue;
-		}
+			continue;}
 		ensureNoNegativeNumbers(each_pasered);
-	sum+=each_pasered;
-}
-	return sum;
-}
+	sum+=each_pasered;}
+	return sum;}
+
 private void ensureNoNegativeNumbers(int each_pasred) {
 	if(each_pasred<0) {
 	throw new IllegalArgumentException("Negatives not allowed: " +inputs);
@@ -36,11 +32,12 @@ private void ensureNoNegativeNumbers(int each_pasred) {
 }
 private static StringCalculator parser(String input) {
 	if (input.startsWith("//")) {
+		StringBuffer buff = new StringBuffer("");
 		String [] vals = input.split("\n",2);
-		return new StringCalculator( vals[0].substring(2),vals[1]);
-	}
-	else {
-		return new StringCalculator(",",input);
-	}
+		buff.append("[");
+		buff.append(vals[0].substring(2));
+		buff.append("]+");
+		return new StringCalculator(buff.toString(),vals[1]); }
+	else   return new StringCalculator(",",input); 
 }
 }

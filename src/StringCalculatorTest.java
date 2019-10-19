@@ -46,11 +46,17 @@ public void throwsOnNegativesWithAllNumbersNegative() {
 public void NumbersLargerThan1000ShouldbeIgnored() {
 	assertEquals(StringCalculator.add("2,1001"),2);
 }
+@Test
 public void arbitraryLengthDelimiter() {
 	assertEquals(StringCalculator.add("//***\n1***2***3"),6);
 }
-//public void acceptMultipleDelimters() {
-//	assertEquals(StringCalculator.add("//$,@\n1$2@3"),6);
-//}
+@Test
+public void acceptMultipleDelimters() {
+	assertEquals(StringCalculator.add("//$,@\n1$2@3"),6);
+	
+}
+public void acceptMultipleDelimtersOfarbitraryLength() {
+	assertEquals(StringCalculator.add("//$,@,**\n1$2@3**4"),10);
+}
 }
 
